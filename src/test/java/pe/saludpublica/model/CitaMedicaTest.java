@@ -48,4 +48,15 @@ class CitaMedicaTest {
                 () -> new CitaMedica("CITA-001", paciente, null, fechaHora)
         );
     }
+    @Test
+    @DisplayName("Rechazar la creación de una cita sin fecha y hora")
+    void shouldRejectAppointmentWithoutDate() {
+        Paciente paciente = new Paciente("12345678", "Ana", "Pérez", "987654321", "ana@mail.com");
+        Doctor doctor = new Doctor("76543210", "Carlos", "Mendoza", "CMP12345", "Cardiología");
+
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new CitaMedica("CITA-001", paciente, doctor, null)
+        );
+    }
 }
