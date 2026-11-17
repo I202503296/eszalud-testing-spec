@@ -26,4 +26,12 @@ class DoctorTest {
                 () -> new Doctor(null, "Carlos", "Mendoza", "CMP12345", "Cardiología")
         );
     }
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin colegiatura")
+    void shouldRejectDoctorWithoutColegiatura() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor("76543210", "Carlos", "Mendoza", null, "Cardiología")
+        );
+    }
 }
