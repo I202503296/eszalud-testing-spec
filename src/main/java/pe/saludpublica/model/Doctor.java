@@ -14,6 +14,12 @@ public class Doctor {
         if (colegiatura == null) {
             throw new IllegalArgumentException("La colegiatura no puede ser nula");
         }
+        if (nombres == null) {
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos");
+        }
+        if (apellidos == null) {
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
