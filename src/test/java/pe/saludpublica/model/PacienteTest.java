@@ -64,4 +64,31 @@ class PacienteTest {
         Paciente paciente = new Paciente("12345678", "Ana", "Pérez", "987654321", null);
         assertNull(paciente.getCorreo());
     }
+    @Test
+    @DisplayName("GEN-003: Crear dos objetos con información diferente sin interferencia")
+    void shouldMaintainIndependentDataForMultipleInstances() {
+        Paciente paciente1 = new Paciente("11111111", "Ana", "Pérez", "987654321", "ana@mail.com");
+        Paciente paciente2 = new Paciente("22222222", "Luis", "Gómez", "912345678", "luis@mail.com");
+
+        // Verificamos que los datos del paciente 1 no se hayan sobreescrito
+        assertEquals("11111111", paciente1.getDocumento());
+        assertEquals("Ana", paciente1.getNombres());
+
+        // Verificamos que los datos del paciente 2 sean suyos
+        assertEquals("22222222", paciente2.getDocumento());
+        assertEquals("Luis", paciente2.getNombres());
+    }
+
+    @Test
+    @DisplayName("GEN-004: Verificar equals() y hashCode() basados en el documento")
+    void shouldEvaluateEqualityBasedOnDocument() {
+        Paciente pacienteA = new Paciente("12345678", "Ana", "Pérez", "987654321", "ana@mail.com");
+        // Paciente B tiene el mismo documento, para el sistema ES LA MISMA PERSONA
+        Paciente pacienteB = new Paciente("12345678", "Ana María", "Pérez", "987654321", "ana.maria@mail.com");
+        Paciente pacienteDiferente = new Paciente("87654321", "Carlos", "Ruiz", "999888777", "carlos@mail.com");
+
+        assertEquals(pacienteA, pacienteB); // Deben ser iguales por tener el mismo DNI
+        assertNotEquals(pacienteA, pacienteDiferente); // Deben ser diferentes
+        assertEquals(pacienteA.hashCode(), pacienteB.hashCode()); // Sus hashCodes deben coincidir
+    }
 }
