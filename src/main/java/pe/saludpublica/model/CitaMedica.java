@@ -7,6 +7,7 @@ public class CitaMedica {
     private Paciente paciente;
     private Doctor doctor;
     private LocalDateTime fechaHora;
+    private EstadoCita estado;
 
     public CitaMedica(String codigo, Paciente paciente, Doctor doctor, LocalDateTime fechaHora) {
         if (paciente == null) {
@@ -18,14 +19,17 @@ public class CitaMedica {
         if (fechaHora == null) {
             throw new IllegalArgumentException("La fecha y hora son obligatorias");
         }
+
         this.codigo = codigo;
         this.paciente = paciente;
         this.doctor = doctor;
         this.fechaHora = fechaHora;
+        this.estado = EstadoCita.PROGRAMADA; // Por defecto
     }
 
     public String getCodigo() { return codigo; }
     public Paciente getPaciente() { return paciente; }
     public Doctor getDoctor() { return doctor; }
     public LocalDateTime getFechaHora() { return fechaHora; }
+    public EstadoCita getEstado() { return estado; }
 }
