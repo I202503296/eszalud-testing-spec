@@ -20,6 +20,9 @@ public class Doctor {
         if (apellidos == null) {
             throw new IllegalArgumentException("Los apellidos no pueden ser nulos");
         }
+        if (especialidad == null || especialidad.trim().isEmpty()) {
+            throw new IllegalArgumentException("La especialidad no puede ser nula o vacía");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
