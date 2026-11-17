@@ -11,6 +11,9 @@ public class Doctor {
         if (documento == null) {
             throw new IllegalArgumentException("El documento no puede ser nulo");
         }
+        if (colegiatura == null) {
+            throw new IllegalArgumentException("La colegiatura no puede ser nula");
+        }
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -24,4 +27,6 @@ public class Doctor {
     public String getColegiatura() { return colegiatura; }
     public String getEspecialidad() { return especialidad; }
 
+
 }
+
