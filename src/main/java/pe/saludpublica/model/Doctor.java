@@ -8,21 +8,22 @@ public class Doctor {
     private String especialidad;
 
     public Doctor(String documento, String nombres, String apellidos, String colegiatura, String especialidad) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento no puede ser nulo");
+        if (documento == null || documento.trim().isEmpty()) {
+            throw new IllegalArgumentException("El documento no puede ser nulo o vacío");
         }
-        if (colegiatura == null) {
-            throw new IllegalArgumentException("La colegiatura no puede ser nula");
+        if (nombres == null || nombres.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los nombres no pueden ser nulos o vacíos");
         }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres no pueden ser nulos");
+        if (apellidos == null || apellidos.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los apellidos no pueden ser nulos o vacíos");
         }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos no pueden ser nulos");
+        if (colegiatura == null || colegiatura.trim().isEmpty()) {
+            throw new IllegalArgumentException("La colegiatura no puede ser nula o vacía");
         }
         if (especialidad == null || especialidad.trim().isEmpty()) {
             throw new IllegalArgumentException("La especialidad no puede ser nula o vacía");
         }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -35,7 +36,4 @@ public class Doctor {
     public String getApellidos() { return apellidos; }
     public String getColegiatura() { return colegiatura; }
     public String getEspecialidad() { return especialidad; }
-
-
 }
-

@@ -8,15 +8,16 @@ public class Paciente {
     private String correo;
 
     public Paciente(String documento, String nombres, String apellidos, String telefono, String correo) {
-        if (documento == null) {
-            throw new IllegalArgumentException("El documento no puede ser nulo");
+        if (documento == null || documento.trim().isEmpty()) {
+            throw new IllegalArgumentException("El documento es obligatorio y no puede estar vacío");
         }
-        if (nombres == null) {
-            throw new IllegalArgumentException("Los nombres no pueden ser nulos");
+        if (nombres == null || nombres.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los nombres son obligatorios y no pueden estar vacíos");
         }
-        if (apellidos == null) {
-            throw new IllegalArgumentException("Los apellidos no pueden ser nulos");
+        if (apellidos == null || apellidos.trim().isEmpty()) {
+            throw new IllegalArgumentException("Los apellidos son obligatorios y no pueden estar vacíos");
         }
+
         this.documento = documento;
         this.nombres = nombres;
         this.apellidos = apellidos;
