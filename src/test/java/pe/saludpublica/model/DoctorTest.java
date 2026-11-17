@@ -34,4 +34,21 @@ class DoctorTest {
                 () -> new Doctor("76543210", "Carlos", "Mendoza", null, "Cardiología")
         );
     }
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin nombres")
+    void shouldRejectDoctorWithoutFirstName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor("76543210", null, "Mendoza", "CMP12345", "Cardiología")
+        );
+    }
+
+    @Test
+    @DisplayName("Rechazar la creación de un doctor sin apellidos")
+    void shouldRejectDoctorWithoutLastName() {
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> new Doctor("76543210", "Carlos", null, "CMP12345", "Cardiología")
+        );
+    }
 }
