@@ -59,4 +59,14 @@ class CitaMedicaTest {
                 () -> new CitaMedica("CITA-001", paciente, doctor, null)
         );
     }
+    @Test
+    @DisplayName("Verificar que la cita se crea con estado PROGRAMADA por defecto")
+    void shouldHaveProgramadaStatusByDefault() {
+        Paciente paciente = new Paciente("12345678", "Ana", "Pérez", "987654321", "ana@mail.com");
+        Doctor doctor = new Doctor("76543210", "Carlos", "Mendoza", "CMP12345", "Cardiología");
+        LocalDateTime fechaHora = LocalDateTime.of(2026, 12, 1, 10, 30);
+
+        CitaMedica cita = new CitaMedica("CITA-001", paciente, doctor, fechaHora);
+        assertEquals(EstadoCita.PROGRAMADA, cita.getEstado());
+    }
 }
