@@ -29,4 +29,17 @@ public class Paciente {
     public String getApellidos() { return apellidos; }
     public String getTelefono() { return telefono; }
     public String getCorreo() { return correo; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Paciente paciente = (Paciente) obj;
+        return documento.equals(paciente.documento);
+    }
+
+    @Override
+    public int hashCode() {
+        return documento.hashCode();
+    }
 }
