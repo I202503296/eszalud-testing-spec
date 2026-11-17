@@ -9,6 +9,12 @@ public class CitaMedica {
     private LocalDateTime fechaHora;
 
     public CitaMedica(String codigo, Paciente paciente, Doctor doctor, LocalDateTime fechaHora) {
+        if (paciente == null) {
+            throw new IllegalArgumentException("El paciente es obligatorio");
+        }
+        if (doctor == null) {
+            throw new IllegalArgumentException("El doctor es obligatorio");
+        }
         this.codigo = codigo;
         this.paciente = paciente;
         this.doctor = doctor;
